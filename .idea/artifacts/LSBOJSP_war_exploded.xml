@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="LSBOJSP:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/LSBOJSP_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="LSBOJSP" />
+        </element>
+        <element id="directory" name="lib" />
+      </element>
+      <element id="javaee-facet-resources" facet="LSBOJSP/web/Web" />
+      <element id="javaee-facet-resources" facet="LSBOJSP/web/Web2" />
+    </root>
+  </artifact>
+</component>
