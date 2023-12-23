@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
     public static final String JDBC_URL = "jdbc:mysql://localhost:3306/user_info_db";
     public static final String JDBC_USER = "root";
     //TODO 请在下方修改你的数据库密码
-    public static final String JDBC_PASSWORD = "pw";
+    public static final String JDBC_PASSWORD = "Eudei6oh";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
