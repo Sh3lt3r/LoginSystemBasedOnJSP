@@ -1,3 +1,4 @@
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ public class LoginServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    /**TODO 请根据以下指令输入在数据库的命令提示行进行创建数据库 (MySQL)
+    /**
      CREATE DATABASE user_info_db;
 
      USE user_info_db;
@@ -24,7 +25,6 @@ public class LoginServlet extends HttpServlet {
      **/
     public static final String JDBC_URL = "jdbc:mysql://localhost:3306/user_info_db";
     public static final String JDBC_USER = "root";
-    //TODO 请在下方修改你的数据库密码
     public static final String JDBC_PASSWORD = "Eudei6oh";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -32,11 +32,26 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        if (!userExists(username)) {
+            request.setAttribute("LogPrompt", "账号不存在");
+            try {
+                request.getRequestDispatcher("menu.jsp").forward(request, response);
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
+
         if (validateUser(username, password)) {
             //重定向至登陆成功页面
-            response.sendRedirect("success.jsp");
+            response.sendRedirect("../blog/index.jsp");
         } else {
-            response.sendRedirect("failure.jsp");
+            request.setAttribute("LogPrompt", "密码错误");
+            try {
+                request.getRequestDispatcher("menu.jsp").forward(request, response);
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -48,13 +63,31 @@ public class LoginServlet extends HttpServlet {
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     statement.setString(1, username);
                     statement.setString(2, password);
-
                     try (ResultSet resultSet = statement.executeQuery()) {
                         return resultSet.next();
                     }
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean userExists(String username) {
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (
+                Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username=?")
+        ) {
+            preparedStatement.setString(1, username);
+            return preparedStatement.executeQuery().next();
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }

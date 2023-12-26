@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 <head><script src="../assets/js/color-modes.js"></script>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
@@ -128,7 +129,11 @@
                 }
             </script>
         </form>
-        <p class="mt-5 mb-3 text-body-secondary">&copy; 2023 LoginSystem version 1.0</p>
+        <div style="margin-top: 10px;"></div>
+        <div>
+        <h1 style="font-size: 16px;">${LogPrompt}</h1>
+        </div>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2023 LoginSystem version 1.1</p>
     </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
