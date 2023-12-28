@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="java.util.Objects" %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
@@ -8,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Blog Template · Bootstrap v5.3</title>
+    <title>Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
 
@@ -101,7 +103,7 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link href="../blog/blog.css" rel="stylesheet">
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -173,34 +175,49 @@
   <header class="border-bottom lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">Subscribe</a>
+        <a class="link-secondary" href="#">期望链接“爱发电”的打赏页面</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Large</a>
+        <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">LoginSystem</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="link-secondary" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            <a class="link-secondary" href="#" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+            </a>
+            <%
+                if (session != null && Objects.equals(session.getAttribute("loggedIn"), true)) {
+            %>
+                <!-- 用户已登录 -->
+                <span style="margin-right: 10px;">欢迎，<%= session.getAttribute("username") %>  </span>
+                <form method="post" action="/blog">
+                    <button class="btn btn-sm btn-outline-secondary" type="submit" name="logoutButton">登出</button>
+                </form>
+            <%
+                } else {
+            %>
+                <!-- 用户未登录 -->
+                <a class="btn btn-sm btn-outline-secondary" href="/login">登录</a>
+            <%
+                }
+            %>
       </div>
     </div>
   </header>
 
   <div class="nav-scroller py-1 mb-3 border-bottom">
     <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
+      <a class="nav-item nav-link link-body-emphasis active" href="#">主页</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">这是</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">页面</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">的</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">目录</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">但是</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">我</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">不知道</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">写什么</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">因此</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">仅作</a>
+      <a class="nav-item nav-link link-body-emphasis" href="#">占位用途</a>
     </nav>
   </div>
 </div>
@@ -208,9 +225,9 @@
 <main class="container">
   <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <div class="col-lg-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+      <h1 class="display-4 fst-italic">Welcome to the "Welcome" Page</h1>
+      <p class="lead my-3">这里的文字本应当使用一些富含趣味且概括性的，使得用户在进入时快速有效的了解到网站的特色。</p>
+      <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">点击这里跳转详情...但我没写</a></p>
     </div>
   </div>
 
@@ -218,34 +235,34 @@
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-body-secondary">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <strong class="d-inline-block mb-2 text-primary-emphasis">Main</strong>
+          <h3 class="mb-0">为什么没有具体内容？</h3>
+          <div class="mb-1 text-body-secondary">Dec 28</div>
+          <p class="card-text mb-auto">抽到的大作业是第三题，而正因为第三题仅对登录系统做了要求，所以不知道应当存在的主页需要写什么。</p>
           <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-            Continue reading
+            展开阅读...?但已经是全部了
             <svg class="bi"><use xlink:href="#chevron-right"/></svg>
           </a>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#FFFFFF"></rect><image href="../assets/brand/lhfd.jpg" width="200" height="250" /></svg>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-body-secondary">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <strong class="d-inline-block mb-2 text-success-emphasis">Mihoyo</strong>
+          <h3 class="mb-0">原神？启动！</h3>
+          <div class="mb-1 text-body-secondary">Jan 11</div>
+          <p class="mb-auto">你说的对，但是《原神》是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作「提瓦特」的幻想世界...</p>
           <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-            Continue reading
+            我们原神怎么你了？
             <svg class="bi"><use xlink:href="#chevron-right"/></svg>
           </a>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><image href="../assets/brand/O.png" width="100%" height="100%" /></svg>
         </div>
       </div>
     </div>
@@ -254,123 +271,79 @@
   <div class="row g-5">
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
+        Project Advantages
       </h3>
 
-      <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">深入解析：基于JSP的登录系统设计与实现</h2>
+            <p class="blog-post-meta">December 28, 2023 by <a href="#">GreatLovePoet</a></p>
 
-        <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-        <hr>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h2>Blockquotes</h2>
-        <p>This is an example blockquote in action:</p>
-        <blockquote class="blockquote">
-          <p>Quoted text goes here.</p>
-        </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example lists</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
-        <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ul>
-        <p>And this is an ordered list:</p>
-        <ol>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ol>
-        <p>And this is a definition list:</p>
-        <dl>
-          <dt>HyperText Markup Language (HTML)</dt>
-          <dd>The language used to describe and define the content of a Web page</dd>
-          <dt>Cascading Style Sheets (CSS)</dt>
-          <dd>Used to describe the appearance of Web content</dd>
-          <dt>JavaScript (JS)</dt>
-          <dd>The programming language used to build advanced Web sites and applications</dd>
-        </dl>
-        <h2>Inline HTML elements</h2>
-        <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-        <ul>
-          <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-          <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-          <li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
-          <li>Citations, like <cite>— Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-          <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-          <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
-        </ul>
-        <p>Most of these elements are styled by browsers with few modifications on our part.</p>
-        <h2>Heading</h2>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Sub-heading</h3>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <pre><code>Example code block</code></pre>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
+            <p>在本篇文章中，我们将探讨基于JSP（JavaServer Pages）的登录系统的设计与实现。该系统旨在利用Tomcat 9、JSP和Servlet技术，通过MySQL数据库替代传统的txt文件存储学生信息。我们还引入了Bootstrap框架提升前端界面的美观性，并增加了登录状态校验、重定向机制以及用户注册功能。</p>
 
-      <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Another blog post</h2>
-        <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
+            <h3>项目要求：</h3>
+                <ol>
+                    <li>在login.jsp中设计包含学生学号和密码的表单。</li>
+                    <li>在check.jsp中检查学号、密码是否正确。验证通过后重定向到final.jsp，并显示字符串：“欢迎您: ” + 用户名。</li>
+                    <li>验证不通过直接显示错误信息。</li>
+                </ol>
 
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <blockquote>
-          <p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.</p>
-        </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example table</h3>
-        <p>And don't forget about tables in these posts:</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Upvotes</th>
-              <th>Downvotes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Alice</td>
-              <td>10</td>
-              <td>11</td>
-            </tr>
-            <tr>
-              <td>Bob</td>
-              <td>4</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>Charlie</td>
-              <td>7</td>
-              <td>9</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Totals</td>
-              <td>21</td>
-              <td>23</td>
-            </tr>
-          </tfoot>
-        </table>
+            <h3>项目实现亮点：</h3>
+            <ul>
+                <li><strong>数据库升级：</strong> 使用MySQL数据库替代了传统的txt文件，提升了数据存储的效率和可维护性。</li>
+                <li><strong>前端美化：</strong> 引入了基于Bootstrap框架的HTML页面，使界面更加直观和用户友好。</li>
+                <li><strong>安全性提升：</strong> 引入了Session和Cookie机制，加强了用户登录状态的校验，提高了系统的安全性。</li>
+                <li><strong>重定向优化：</strong> 实现了更为完善的重定向机制，登录成功后用户将被重定向到/blog/index.jsp页面。</li>
+                <li><strong>功能扩展：</strong> 额外实现了用户注册功能，丰富了系统的功能性。</li>
+            </ul>
 
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
+            <hr>
 
-      <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">New feature</h2>
-        <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
+            <h2>详细代码示例：</h2>
+            <pre><code>
+    private boolean registerUser(String username, String password) {
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ul>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
+        try {
+            // 注册 JDBC 驱动
+            Class.forName(LoginServlet.JDBC_DRIVER);
+
+            // 打开数据库连接
+            connection = DriverManager.getConnection(LoginServlet.JDBC_URL, LoginServlet.JDBC_USER, LoginServlet.JDBC_PASSWORD);
+
+            // 插入用户信息
+            String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // 执行 SQL
+            int rowsAffected = statement.executeUpdate();
+
+            // 注册成功，返回 true
+            return rowsAffected > 0;
+        } catch (ClassNotFoundException | SQLException e) {
+            // 异常处理
+            e.printStackTrace();
+            return false;
+        } finally {
+            // 关闭数据库连接
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+            </code></pre>
+
+            <p>以上内容为基于JSP的登录系统设计与实现的概述，详细的代码和项目结构请查看相应的源文件。</p>
+        </article>
 
       <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
@@ -385,7 +358,6 @@
           <h4 class="fst-italic">About</h4>
           <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
         </div>
-
         <div>
           <h4 class="fst-italic">Recent posts</h4>
           <ul class="list-unstyled">
@@ -422,18 +394,19 @@
         <div class="p-4">
           <h4 class="fst-italic">Archives</h4>
           <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-            <li><a href="#">February 2021</a></li>
-            <li><a href="#">January 2021</a></li>
-            <li><a href="#">December 2020</a></li>
-            <li><a href="#">November 2020</a></li>
-            <li><a href="#">October 2020</a></li>
-            <li><a href="#">September 2020</a></li>
-            <li><a href="#">August 2020</a></li>
-            <li><a href="#">July 2020</a></li>
-            <li><a href="#">June 2020</a></li>
-            <li><a href="#">May 2020</a></li>
-            <li><a href="#">April 2020</a></li>
+            <li><a href="#">December 2023</a></li>
+            <li><a href="#">November 2023</a></li>
+            <li><a href="#">October 2023</a></li>
+            <li><a href="#">September 2023</a></li>
+            <li><a href="#">August 2023</a></li>
+            <li><a href="#">July 2023</a></li>
+            <li><a href="#">June 2023</a></li>
+            <li><a href="#">May 2023</a></li>
+            <li><a href="#">April 2023</a></li>
+            <li><a href="#">March 2023</a></li>
+            <li><a href="#">February 2023</a></li>
+            <li><a href="#">January 2023</a></li>
+
           </ol>
         </div>
 
@@ -441,8 +414,8 @@
           <h4 class="fst-italic">Elsewhere</h4>
           <ol class="list-unstyled">
             <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">QQ</a></li>
           </ol>
         </div>
       </div>

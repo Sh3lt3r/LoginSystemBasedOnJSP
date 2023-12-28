@@ -1,13 +1,15 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 import java.sql.*;
 
-@WebServlet("/login/menu")
+@WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -27,31 +29,40 @@ public class LoginServlet extends HttpServlet {
     public static final String JDBC_USER = "root";
     public static final String JDBC_PASSWORD = "Eudei6oh";
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        // 检查session中是否存在用户信息
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("username") != null) {
+            // 用户已登录，显示主页
+            response.sendRedirect("/blog");
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login/menu.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         if (!userExists(username)) {
             request.setAttribute("LogPrompt", "账号不存在");
-            try {
-                request.getRequestDispatcher("menu.jsp").forward(request, response);
-            } catch (ServletException e) {
-                throw new RuntimeException(e);
-            }
+            request.getRequestDispatcher("/login/menu.jsp").forward(request, response);
             return;
         }
 
         if (validateUser(username, password)) {
+            //记录登录信息
+            HttpSession session = request.getSession();
+            session.setAttribute("loggedIn", true);
+            session.setAttribute("username", username);
             //重定向至登陆成功页面
-            response.sendRedirect("../blog/index.jsp");
+            response.sendRedirect("/blog");
         } else {
             request.setAttribute("LogPrompt", "密码错误");
-            try {
-                request.getRequestDispatcher("menu.jsp").forward(request, response);
-            } catch (ServletException e) {
-                throw new RuntimeException(e);
-            }
+            request.getRequestDispatcher("/login/menu.jsp").forward(request, response);
         }
     }
 

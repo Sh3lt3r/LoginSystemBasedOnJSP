@@ -86,7 +86,7 @@
         display: block !important;
       }
     </style>
-    <link href="sign-in.css" rel="stylesheet">
+    <link href="../login/sign-in.css" rel="stylesheet">
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -107,9 +107,8 @@
 
 
     <main class="form-signin w-100 m-auto">
-        <img class="mb-4" src="../assets/brand/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">输入账号与密码</h1>
-        <form action="../login/menu" method="post">
+        <form action="../login" method="post">
             <div class="form-floating">
                 <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
                 <label for="floatingUsername">Username</label>
@@ -118,14 +117,15 @@
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
-            <button class="btn btn-primary w-100 py-2" type="submit">登入</button>
+            <button class="btn btn-primary w-100 p
+        <img class="mb-4" src="../assets/brand/logo.png" alt="" width="72" height="72" type="submit">登入</button>
         </form>
         <div style="margin-top: 10px;"></div>
         <form>
             <button class="btn btn-primary w-100 py-2" type="button" onclick="redirectToTargetPage()">注册</button>
             <script>
                 function redirectToTargetPage() {
-                    window.location.href = "../register/table.jsp";
+                    window.location.href = "/register";
                 }
             </script>
         </form>

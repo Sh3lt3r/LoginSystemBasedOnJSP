@@ -86,7 +86,7 @@
         display: block !important;
       }
     </style>
-    <link href="reg.css" rel="stylesheet">
+    <link href="../register/reg.css" rel="stylesheet">
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -109,7 +109,7 @@
     <main class="form-reg w-100 m-auto">
         <img class="mb-4" src="../assets/brand/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">注册新账号</h1>
-        <form action="../register/table" method="post">
+        <form action="../register" method="post">
             <div class="form-floating">
                 <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
                 <label for="floatingUsername">Username</label>
@@ -130,7 +130,7 @@
             <button class="btn btn-primary w-100 py-2" type="button" onclick="redirectToTargetPage()">已拥有账号？点此登录</button>
             <script>
                 function redirectToTargetPage() {
-                    window.location.href = "../login/menu.jsp";
+                    window.location.href = "/login";
                 }
             </script>
         </form>
