@@ -107,8 +107,9 @@
 
 
     <main class="form-signin w-100 m-auto">
+        <img class="mb-4" src="/assets/brand/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">输入账号与密码</h1>
-        <form action="../login" method="post">
+        <form action="/login" method="post">
             <div class="form-floating">
                 <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
                 <label for="floatingUsername">Username</label>
@@ -117,8 +118,7 @@
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
-            <button class="btn btn-primary w-100 p
-        <img class="mb-4" src="../assets/brand/logo.png" alt="" width="72" height="72" type="submit">登入</button>
+        <button class="btn btn-primary w-100 py-2" type="submit">登入</button>
         </form>
         <div style="margin-top: 10px;"></div>
         <form>
