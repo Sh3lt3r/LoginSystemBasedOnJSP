@@ -107,9 +107,9 @@
 
 
     <main class="form-reg w-100 m-auto">
-        <img class="mb-4" src="../assets/brand/logo.png" alt="" width="72" height="72">
+        <img class="mb-4" src="/assets/brand/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">注册新账号</h1>
-        <form action="../register" method="post">
+        <form action="/register" method="post">
             <div class="form-floating">
                 <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Username">
                 <label for="floatingUsername">Username</label>
