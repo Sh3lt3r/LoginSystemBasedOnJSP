@@ -256,7 +256,7 @@
           <h3 class="mb-0">原神？启动！</h3>
           <div class="mb-1 text-body-secondary">Jan 11</div>
           <p class="mb-auto">你说的对，但是《原神》是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作「提瓦特」的幻想世界...</p>
-          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+          <a href="https://www.bilibili.com/video/BV1NP41127r7/?spm_id_from=333.337.search-card.all.click" class="icon-link gap-1 icon-link-hover stretched-link">
             我们原神怎么你了？
             <svg class="bi"><use xlink:href="#chevron-right"/></svg>
           </a>
@@ -356,35 +356,35 @@
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+          <p class="mb-0">本页面大多数超链接均无法使用，不是你的错，只是因为我没写相应的页面。</p>
         </div>
         <div>
           <h4 class="fst-italic">Recent posts</h4>
           <ul class="list-unstyled">
             <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="https://www.bilibili.com/video/BV1GJ411x7h7/?spm_id_from=333.337.search-card.all.click">
                 <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                 <div class="col-lg-8">
-                  <h6 class="mb-0">Example blog post title</h6>
-                  <small class="text-body-secondary">January 15, 2023</small>
+                  <h6 class="mb-0">这里本应该有一篇博客</h6>
+                  <small class="text-body-secondary">January 15, 2024</small>
                 </div>
               </a>
             </li>
             <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="https://www.bilibili.com/video/BV1GJ411x7h7/?spm_id_from=333.337.search-card.all.click">
                 <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                 <div class="col-lg-8">
-                  <h6 class="mb-0">This is another blog post title</h6>
-                  <small class="text-body-secondary">January 14, 2023</small>
+                  <h6 class="mb-0">这里本应该有另一篇博客</h6>
+                  <small class="text-body-secondary">January 14, 2024</small>
                 </div>
               </a>
             </li>
             <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="https://www.bilibili.com/video/BV1GJ411x7h7/?spm_id_from=333.337.search-card.all.click">
                 <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                 <div class="col-lg-8">
-                  <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
-                  <small class="text-body-secondary">January 13, 2023</small>
+                  <h6 class="mb-0">这里其实还有一篇</h6>
+                  <small class="text-body-secondary">January 13, 2024</small>
                 </div>
               </a>
             </li>
@@ -413,9 +413,9 @@
         <div class="p-4">
           <h4 class="fst-italic">Elsewhere</h4>
           <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">X</a></li>
-            <li><a href="#">QQ</a></li>
+            <li><a href="https://github.com/Sh3lt3r/LoginSystemBasedOnJSP">GitHub</a></li>
+            <li><a href="#">邮箱:emornjoaip5@gmail.com</a></li>
+            <li><a href="#">QQ:1044034750</a></li>
           </ol>
         </div>
       </div>
